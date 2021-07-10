@@ -171,6 +171,14 @@ Make it executable
 sudo chmod +x /etc/cron.daily/updatelists
 ```
 
+## Pi-Hole Beta
+
+```bash
+pihole checkout ftl release/v5.9
+pihole checkout core release/v5.4
+pihole checkout web release/v5.6
+```
+
 <!-- ### Update pi-hole itself weekly (Not Recommended)
 
 Create a weekly cron job called updatepihole
