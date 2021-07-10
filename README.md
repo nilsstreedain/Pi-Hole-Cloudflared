@@ -141,7 +141,12 @@ Blacklists (regex):
 
 Whitelist (exact):
 - Recommended Whitelist: `https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt`
+- My Whitelist:
+`https://raw.githubusercontent.com/nilsstreedain/pihole-whitelist/main/exact.txt`
 
+Whitelist (regex):
+- My Whitelist:
+`https://raw.githubusercontent.com/nilsstreedain/pihole-whitelist/main/regex.txt`
 Update pi-hole lists
 
 ```bash
