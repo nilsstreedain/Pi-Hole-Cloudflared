@@ -175,7 +175,13 @@ sudo chmod +x /etc/cron.daily/updatelists
 
 ```bash
 pihole checkout ftl release/v5.9
+```
+
+```bash
 pihole checkout core release/v5.4
+```
+
+```bash
 pihole checkout web release/v5.6
 ```
 
