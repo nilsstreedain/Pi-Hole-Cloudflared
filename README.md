@@ -31,24 +31,6 @@ Set Raspberry Pi Country (raspi-config > Localisation Options > WLAN Country)
 
 Change Raspberry Pi Hostname (raspi-config > System Options > Hostname)
 
-```bash
-sudo reboot
-```
-
-## Setup Pi-Hole
-
-Install Pi-Hole and follow the steps in the user interface
-
-```bash
-sudo curl -sSL https://install.pi-hole.net | bash
-```
-
-Change default Pi-Hole password
-
-```bash
-sudo pihole -a -p
-```
-
 ## Setup Cloudflared
 
 Install Cloudflared
@@ -91,7 +73,45 @@ sudo systemctl start cloudflared
 sudo systemctl status cloudflared
 ```
 
-Use the web admin panel to change the Pi-Hole upstream DNS to 127.0.0.1#5053 for IPv4 and ::1#5053 for IPv6
+### Update Cloudflared weekly
+
+Create a monthly cron job called updatecloudflared
+
+```bash
+sudo nano /etc/cron.weekly/updatecloudflared
+```
+
+Paste the following:
+
+```bash
+#!/bin/sh
+
+# update Cloudflared root list
+sudo cloudflared update
+sudo systemctl restart cloudflared
+```
+
+Make it executable
+
+```bash
+sudo chmod +x /etc/cron.weekly/updatecloudflared
+```
+
+## Setup Pi-Hole
+
+Install Pi-Hole and follow the steps in the user interface
+
+Make sure to set the upstream DNS to 127.0.0.1#5053 for IPv4 and ::1#5053 for IPv6
+
+```bash
+sudo curl -sSL https://install.pi-hole.net | bash
+```
+
+Change default Pi-Hole password
+
+```bash
+sudo pihole -a -p
+```
 
 ## Setup Auto-Updating BlockLists
 
@@ -151,7 +171,7 @@ Make it executable
 sudo chmod +x /etc/cron.daily/updatelists
 ```
 
-### Update pi-hole itself weekly (Not Recommended)
+<!-- ### Update pi-hole itself weekly (Not Recommended)
 
 Create a weekly cron job called updatepihole
 
@@ -173,27 +193,4 @@ Make it executable
 ```bash
 sudo chmod +x /etc/cron.weekly/updatepihole
 ```
-
-### Update Cloudflared weekly (Not Really Needed)
-
-Create a monthly cron job called updatecloudflared
-
-```bash
-sudo nano /etc/cron.weekly/updatecloudflared
-```
-
-Paste the following:
-
-```bash
-#!/bin/sh
-
-# update Cloudflared root list
-sudo cloudflared update
-sudo systemctl restart cloudflared
-```
-
-Make it executable
-
-```bash
-sudo chmod +x /etc/cron.weekly/updatecloudflared
-```
+-->
