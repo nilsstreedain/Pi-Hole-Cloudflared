@@ -3,7 +3,7 @@
 Before getting started:
 - Create a fresh install of Raspbian (or your prefered distro) with ssh enabled
 - Connect your Raspberry Pi (or whatever computer you're using) to your network
-- ssh in the Pi
+- ssh into the Pi
 
 ## Update Raspberry Pi
 
